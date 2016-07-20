@@ -1,0 +1,67 @@
+---
+title: "CodeBook"
+author: "Zhehan"
+date: "June 27, 2016"
+output: html_document
+---
+#Introduction
+The code book includes the description of the data sets that were used, the variables that were created, and the work that I performed. 
+
+#The data sets that were used 
+The data for the project is from:  
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+The general description of the used data sets are listed: 
+
+- "features.txt": list of features 
+- "activity.txt": list of activities and the corresponding activity ID
+- "X_train.txt": training set
+- "Y_train.txt": training labels
+- "subject_train.txt": training subject
+- "X_test.txt": test set
+- "Y_test.txt": test labels 
+- "subject_test.txt": test subject
+
+The full description of the data can be found in the following website: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+#The variables that were created 
+- features: the table of features.txt
+- activity: the table of activity.txt
+- training_set: the table of X_train.txt 
+- training_labels: the table of Y_train.txt
+- training_subject: the table of subject_train.txt
+- test_set: the table of X_test.txt
+- test_labels: the table of Y_test.txt
+- test_subject: the table of subject_test.txt
+- training: the combined table of training_set, training_label and training_subject
+- test: the combined table of test_set, test_label, and test_subject
+- training_test: the combined table of training and test 
+- training_test_mean_std: the selected table of trainng_test, only showing the variables that include mean and standard deviation
+- tidydata: the final output of the entire data cleaning process
+
+#The transformations that I performed 
+1. read the features, activity, training set, training labels, training subject, test set, test labels, and test subject
+2. combine the table of training_set, training_subject and training_label into "training"
+3. combine the table of test_set, test_subject, and test_label into "test"
+4. combine the table of "training" and "test" into "training_test"
+5. set the name for training_test
+6. extract the variables that include mean and standard deviation from "training_test" and form a new table of "training_test_mean_std"
+7. add the subject and activity to the end of training_test_mean_std 
+8. replace the activityID by descriptive activity name in training_test_mean_std
+9. replace the variable names of training_test_mean_std with more descriptive names
+    - replace first t by time
+    - replace first f by frequency
+    - replace Acc by Acceleration
+    - replace Mag by Magnitude
+    - replace -mean to Mean
+    - replace -std to StdDev
+    - remove parentheses
+10. group the training_test_mean_std by subject and activity
+11. create a new table called "tidydata", which shows the mean of each variable for each activity and each subject in training_test_mean_std
+    
+
+
+
+
+
+
